@@ -1,7 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import {Content as markdownContent, frontmatter} from "../data/data.md";
+import data from "../data/data.json";
 ---
 
 <BaseLayout>
 	<h1>Astro</h1>
+	<h2>{frontmatter.title}</h2>
+	<p>{frontmatter.description}</p>
+	<div class='meta'>
+		<p>By {frontmatter.author} on {frontmatter.date}</p>
+	</div>
+	<markdownContent></markdownContent>
+	<div class='data'>
+		<h2>{data.title}</h2>
+		<p>{data.description}</p>
+	</div>
 </BaseLayout>
