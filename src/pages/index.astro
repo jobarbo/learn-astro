@@ -16,4 +16,16 @@ import data from "../data/data.json";
 		<h2>{data.title}</h2>
 		<p>{data.description}</p>
 	</div>
+	<p id='copyright-container'>
+		All rights reserved &copy;
+		<span id='copyright'></span>
+	</p>
 </BaseLayout>
+
+<script>
+	import {getCopyRightYear} from "../lib/utils";
+
+	const currentYear = getCopyRightYear();
+	const copyright = document.getElementById("copyright");
+	copyright.textContent = currentYear.toString();
+</script>

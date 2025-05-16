@@ -1,0 +1,14 @@
+---
+const {href, label} = Astro.props;
+---
+
+<a href={href} class='link text-2xl'>
+	{label}
+</a>
+
+<style>
+	.link {
+		color: blue;
+		text-decoration: none;
+	}
+</style>
