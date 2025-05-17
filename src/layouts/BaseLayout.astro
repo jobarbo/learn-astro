@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import Link from "../components/Link.astro";
 ---
 
 <html lang='en'>
@@ -11,10 +10,7 @@ import Link from "../components/Link.astro";
 		<meta name='generator' content={Astro.generator} />
 		<title>Astro</title>
 	</head>
-	<nav>
-		<Link href='/' label='Home' />
-		<Link href='/about' label='About' />
-	</nav>
+	<nav></nav>
 	<body>
 		<slot />
 	</body>
