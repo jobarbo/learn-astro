@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {Content as markdownContent, frontmatter} from "../data/data.md";
 import data from "../data/data.json";
+console.log(data);
 ---
 
 <BaseLayout>
 	<h1>Astro</h1>
+	<p class='data'>{data.autho}</p>
 </BaseLayout>
 
 <script></script>
