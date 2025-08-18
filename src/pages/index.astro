@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import CardContainer from "../components/CardContainer.astro";
+import Card from "../components/Card.astro";
 import data from "../data/data.json";
-console.log(data);
 ---
 
 <BaseLayout>
-	<h1>Astro</h1>
-	<p class='data'>{data.autho}</p>
+	<CardContainer>
+		{data.map((card) => <Card {card} />)}
+	</CardContainer>
 </BaseLayout>
-
-<script></script>

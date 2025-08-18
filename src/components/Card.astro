@@ -1,0 +1,48 @@
+---
+import Badge from "./Badge.astro";
+import Author from "./Author.astro";
+
+const {card} = Astro.props;
+---
+
+<article class='card'>
+	<div class='card__image-container'>
+		<img src={card.hero} alt='' class='card__image' />
+	</div>
+	<div class='card__content-wrapper'>
+		<Badge category={card.category} contextClass='card__badge' categoryColor={card.categoryColor} />
+		<h2 class='card__title'>{card.title}</h2>
+		<p class='card__description'>{card.description}</p>
+	</div>
+	<Author contextClass='card__footer' author={card.author} time={card.time} />
+</article>
+
+<style>
+	.card {
+		background-color: #c8e9ff;
+		border-radius: 10px;
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		overflow: hidden;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.card__content-wrapper {
+		padding: 1.5rem;
+	}
+
+	.card__title {
+		font-size: 1.15;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+		line-height: 1.1;
+	}
+
+	.card__description {
+		font-size: 0.875rem;
+		font-weight: 400;
+		margin: 0;
+	}
+</style>
