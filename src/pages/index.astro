@@ -27,5 +27,7 @@ import data from "../data/data.json";
 
 	const currentYear = getCopyRightYear();
 	const copyright = document.getElementById("copyright");
-	copyright.textContent = currentYear.toString();
+	if (copyright) {
+		copyright.textContent = currentYear.toString();
+	}
 </script>
