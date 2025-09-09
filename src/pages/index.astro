@@ -1,5 +1,14 @@
 ---
 import Button from "../components/Button.astro";
+import Heading from "../components/Heading.astro";
+const headings = [
+	{tag: "h1", size: "title1", text: "Heading 1"},
+	{tag: "h2", size: "title2", text: "Heading 2"},
+	{tag: "h3", size: "title3", text: "Heading 3"},
+	{tag: "h4", size: "title4", text: "Heading 4"},
+	{tag: "h5", size: "title5", text: "Heading 5"},
+	{tag: "h6", size: "title6", text: "Heading 6"},
+];
 ---
 
 <html lang='en'>
@@ -12,11 +21,17 @@ import Button from "../components/Button.astro";
 	</head>
 </html>
 <body>
-	<h1>Astro Components</h1>
+	{
+		headings.map((heading) => {
+			return (
+				<Heading tag={heading.tag} size={heading.size}>
+					{heading.text}
+				</Heading>
+			);
+		})
+	}
 
-	<Button id='btn-1' aria-label='Button 1' data-testid='btn-1' isBordered={true} border_color='var(--border-col)' background='var(--bg-col)' color='var(--font-col)'>Click Me</Button>
-
-	<Button id='btn-2' aria-label='Button 1' data-testid='btn-1' isBordered={true}>Click Me</Button>
+	<Button id='btn-1' aria-label='Button 1' data-testid='btn-1'>Click me</Button>
 </body>
 <script>
 	let btn = document.querySelector('[data-testid="btn-1"]') as HTMLElement | null;
