@@ -1,33 +1,46 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import {Content as markdownContent, frontmatter} from "../data/data.md";
-import data from "../data/data.json";
+import Button from "../components/Button.astro";
 ---
 
-<BaseLayout>
-	<h1>Astro</h1>
-	<h2>{frontmatter.title}</h2>
-	<p>{frontmatter.description}</p>
-	<div class='meta'>
-		<p>By {frontmatter.author} on {frontmatter.date}</p>
-	</div>
-	<markdownContent></markdownContent>
-	<div class='data'>
-		<h2>{data.title}</h2>
-		<p>{data.description}</p>
-	</div>
-	<p id='copyright-container'>
-		All rights reserved &copy;
-		<span id='copyright'></span>
-	</p>
-</BaseLayout>
+<html lang='en'>
+	<head>
+		<meta charset='utf-8' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		<title>Astro Components</title>
+	</head>
+</html>
+<body>
+	<h1>Astro Components</h1>
 
+	<Button id='btn-1' aria-label='Button 1' data-testid='btn-1' isBordered={true} border_color='var(--border-col)' background='var(--bg-col)' color='var(--font-col)'>Click Me</Button>
+
+	<Button id='btn-2' aria-label='Button 1' data-testid='btn-1' isBordered={true}>Click Me</Button>
+</body>
 <script>
-	import {getCopyRightYear} from "../lib/utils";
-
-	const currentYear = getCopyRightYear();
-	const copyright = document.getElementById("copyright");
-	if (copyright) {
-		copyright.textContent = currentYear.toString();
-	}
+	let btn = document.querySelector('[data-testid="btn-1"]') as HTMLElement | null;
+	btn?.addEventListener("mouseover", () => {
+		btn.style.backgroundColor = "var(--surface-3)";
+	});
+	btn?.addEventListener("mouseout", () => {
+		btn.style.backgroundColor = "var(--background)";
+	});
 </script>
+<style>
+	@import "https://unpkg.com/open-props";
+	@import "https://unpkg.com/open-props/normalize.min.css";
+	@import "../styles/global.css";
+
+	body {
+		display: grid;
+		place-content: center;
+		gap: 1.5rem;
+		padding: 1.5rem;
+		background-color: rgb(43, 44, 70);
+	}
+
+	h1 {
+		color: white;
+	}
+</style>

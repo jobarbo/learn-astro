@@ -1,0 +1,35 @@
+---
+const {isBordered, classList = "default", background = "var(--surface-2)", color = "var(--text-1)", border_color = "var(--surface-3)", ...rest} = Astro.props;
+---
+
+<!-- ...rest = any other props passed to the button and will be applied as attributes -->
+<button class:list={["btn", classList, {bordered: isBordered}]} {...rest}>
+	<slot />
+</button>
+
+<style
+	define:vars={{
+		background,
+		color,
+		border_color,
+	}}
+>
+	.btn {
+		background: var(--background, white);
+		color: var(--color, black);
+		border: none;
+		padding: 0.5rem 1rem;
+		border-radius: 0.25rem;
+		cursor: pointer;
+		transition: background-color 0.2s;
+	}
+
+	.btn.black-bg {
+		background: black;
+		color: white;
+	}
+
+	.bordered {
+		border: 2px solid var(--border_color, black);
+	}
+</style>

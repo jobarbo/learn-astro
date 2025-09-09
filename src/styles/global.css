@@ -1,1 +1,5 @@
-@import "tailwindcss";
+:root {
+	--bg-col: rgb(30, 18, 74);
+	--font-col: rgb(203, 199, 252);
+	--border-col: rgb(79, 49, 185);
+}
