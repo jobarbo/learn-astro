@@ -1,0 +1,313 @@
+---
+import Layout from "../layouts/layout.astro";
+
+let id_array = [];
+for (let i = 0; i < 100; i++) {
+	id_array.push(Math.floor(Math.random() * 100));
+}
+
+const products = [
+	{
+		id: 1,
+		name: "Product 1",
+		price: 100,
+		category: ["Category 1", "Category 2"],
+		description: "Description 1",
+		image: "https://picsum.photos/id/" + id_array[0] + "/200/300",
+	},
+	{
+		id: 2,
+		name: "Product 2",
+		price: 200,
+		category: ["Category 2", "Category 3"],
+		description: "Description 2",
+		image: "https://picsum.photos/id/" + id_array[1] + "/200/300",
+	},
+	{
+		id: 3,
+		name: "Product 3",
+		price: 300,
+		category: ["Category 3", "Category 1"],
+		description: "Description 3",
+		image: "https://picsum.photos/id/" + id_array[2] + "/200/300",
+	},
+	{
+		id: 4,
+		name: "Product 4",
+		price: 400,
+		category: ["Category 1", "Category 2"],
+		description: "Description 4",
+		image: "https://picsum.photos/id/" + id_array[3] + "/200/300",
+	},
+	{
+		id: 5,
+		name: "Product 5",
+		price: 200,
+		category: ["Category 1", "Category 2"],
+		description: "Description 5",
+		image: "https://picsum.photos/id/" + id_array[4] + "/200/300",
+	},
+	{
+		id: 6,
+		name: "Product 6",
+		price: 200,
+		category: ["Category 2", "Category 3"],
+		description: "Description 6",
+		image: "https://picsum.photos/id/" + id_array[5] + "/200/300",
+	},
+	{
+		id: 7,
+		name: "Product 7",
+		price: 200,
+		category: ["Category 3", "Category 1"],
+		description: "Description 7",
+		image: "https://picsum.photos/id/" + id_array[6] + "/200/300",
+	},
+	{
+		id: 8,
+		name: "Product 8",
+		price: 200,
+		category: ["Category 1", "Category 2"],
+		description: "Description 8",
+		image: "https://picsum.photos/id/" + id_array[7] + "/200/300",
+	},
+	{
+		id: 9,
+		name: "Product 9",
+		price: 200,
+		category: ["Category 2", "Category 3"],
+		description: "Description 9",
+		image: "https://picsum.photos/id/" + id_array[8] + "/200/300",
+	},
+	{
+		id: 10,
+		name: "Product 10",
+		price: 200,
+		category: ["Category 4"],
+		description: "Description 10",
+		image: "https://picsum.photos/id/" + id_array[9] + "/200/300",
+	},
+];
+
+const categories = [...new Set(products.map((product) => product.category).flat())];
+console.log(categories);
+---
+
+<Layout>
+	<section class='products'>
+		<div class='products__categories'>
+			<button data-product-category='all' class='products__categories-button'>All</button>
+			{
+				categories.map((category) => (
+					<button data-product-category={category} class='products__categories-button'>
+						{category}
+					</button>
+				))
+			}
+		</div>
+		<div class='products__container'>
+			<h1>Products</h1>
+			<div data-products-list class='products__list'>
+				{
+					products.map((product) => (
+						<div data-product-card data-product-category={product.category} class='product__card'>
+							<div class='product__card-image'>
+								<img src={product.image} alt={product.name} />
+							</div>
+							<div class='product__card-content'>
+								<h2>{product.name}</h2>
+								<p>{product.category}</p>
+								<p>{product.description}</p>
+							</div>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	import gsap from "gsap";
+	import {Flip} from "gsap/Flip";
+	gsap.registerPlugin(Flip);
+
+	const allButton = document.querySelector("[data-product-category='all']") as HTMLElement;
+	const filters = gsap.utils.toArray("[data-product-category]") as HTMLElement[];
+	const items = gsap.utils.toArray("[data-product-card]") as HTMLElement[];
+
+	function updateFilters() {
+		const state = Flip.getState(items);
+
+		// Check if "All" button is active
+		if (allButton.classList.contains("active")) {
+			// Show all items
+			items.forEach((item) => (item.style.display = "inline-flex"));
+		} else {
+			// Get the single active filter category
+			const activeButton = filters.find((button) => button.classList.contains("active"));
+
+			if (activeButton) {
+				const activeCategory = activeButton.dataset.productCategory;
+
+				// Filter items based on the single active category
+				items.forEach((item) => {
+					const itemCategories = item.dataset.productCategory.split(",");
+					const shouldShow = itemCategories.includes(activeCategory);
+					item.style.display = shouldShow ? "inline-flex" : "none";
+				});
+			} else {
+				// No active filter, show all items
+				items.forEach((item) => (item.style.display = "inline-flex"));
+			}
+		}
+
+		// animate from the previous state
+		Flip.from(state, {
+			duration: 0.4,
+			scale: true,
+			absolute: true,
+			ease: "power1.inOut",
+			onEnter: (elements) => gsap.fromTo(elements, {opacity: 0, scale: 0}, {opacity: 1, scale: 1, duration: 0.4}),
+			onLeave: (elements) => gsap.to(elements, {opacity: 0, scale: 0, duration: 0.4}),
+		});
+	}
+
+	filters.forEach((filter) =>
+		filter.addEventListener("click", (e: Event) => {
+			// Remove active class from all buttons first
+			filters.forEach((button) => button.classList.remove("active"));
+			allButton.classList.remove("active");
+
+			// Add active class only to clicked button
+			(e.target as HTMLElement).classList.add("active");
+			updateFilters();
+		})
+	);
+
+	allButton.addEventListener("click", () => {
+		// Remove active class from all filter buttons
+		filters.forEach((button) => button.classList.remove("active"));
+		// Add active class to all button
+		allButton.classList.add("active");
+		updateFilters();
+	});
+</script>
+
+<style>
+	.products {
+		width: 100%;
+		height: 100%;
+
+		> * {
+			font-family: "PP Fraktion Mono";
+		}
+	}
+
+	.products__categories {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.products__categories-button {
+		padding: 0.5rem 1rem;
+		border-radius: 0.5rem;
+		border: 1px solid #ccc;
+		cursor: pointer;
+	}
+
+	.products__categories-button:hover {
+		background-color: #ccc;
+	}
+
+	.products__categories-button.active {
+		background-color: #007bff;
+		color: white;
+		border-color: #007bff;
+	}
+
+	.products__container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.products__list {
+		width: 100%;
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+		align-items: flex-start;
+		justify-content: flex-start;
+		gap: 1rem;
+	}
+
+	.product__card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		width: 300px; /* Fixed width prevents layout shifts */
+		border: 1px solid #ccc;
+		background-color: #fff;
+		border-radius: 0.5rem;
+		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+		cursor: pointer;
+		backface-visibility: hidden;
+		will-change: transform, opacity;
+	}
+
+	.product__card:hover {
+		transform: scale(1.05);
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+	}
+
+	.product__card.is-hidden {
+		pointer-events: none;
+	}
+
+	.product__card-image {
+		aspect-ratio: 16/9;
+		width: 100%;
+		height: auto;
+		overflow: hidden;
+	}
+
+	.product__card-image img {
+		aspect-ratio: 16/9;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.product__card-content {
+		padding: 1rem 0.5rem 2rem 0.5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.product__card-content h2 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		line-height: 1.1;
+		color: var(--text-1);
+		margin: 0;
+	}
+
+	.product__card-content p {
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.1;
+		color: var(--text-2);
+		margin: 0;
+	}
+</style>

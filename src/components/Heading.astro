@@ -10,9 +10,9 @@ const sizes = {
 	h6: "h6",
 };
 
-interface Props extends HTMLAttributes<keyof typeof sizes> {
-	tag: keyof typeof sizes;
-	size: keyof typeof sizes;
+interface Props {
+	tag: string;
+	size: string;
 	classes?: string;
 }
 

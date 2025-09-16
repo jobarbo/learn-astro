@@ -1,4 +1,6 @@
 ---
+import Layout from "../layouts/layout.astro";
+
 import Button from "../components/Button.astro";
 import Heading from "../components/Heading.astro";
 const headings = [
@@ -11,16 +13,7 @@ const headings = [
 ];
 ---
 
-<html lang='en'>
-	<head>
-		<meta charset='utf-8' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-		<meta name='viewport' content='width=device-width' />
-		<meta name='generator' content={Astro.generator} />
-		<title>Astro Components</title>
-	</head>
-</html>
-<body>
+<Layout>
 	{
 		headings.map((heading) => {
 			return (
@@ -32,7 +25,8 @@ const headings = [
 	}
 
 	<Button id='btn-1' aria-label='Button 1' data-testid='btn-1'>Click me</Button>
-</body>
+</Layout>
+
 <script>
 	let btn = document.querySelector('[data-testid="btn-1"]') as HTMLElement | null;
 	btn?.addEventListener("mouseover", () => {
@@ -42,6 +36,7 @@ const headings = [
 		btn.style.backgroundColor = "var(--background)";
 	});
 </script>
+
 <style>
 	@import "https://unpkg.com/open-props";
 	@import "https://unpkg.com/open-props/normalize.min.css";
