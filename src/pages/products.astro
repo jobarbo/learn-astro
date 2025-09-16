@@ -87,6 +87,30 @@ const products = [
 		description: "Description 10",
 		image: "https://picsum.photos/id/" + id_array[9] + "/200/300",
 	},
+	{
+		id: 11,
+		name: "Product 11",
+		price: 200,
+		category: ["Category 4"],
+		description: "Description 11",
+		image: "https://picsum.photos/id/" + id_array[10] + "/200/300",
+	},
+	{
+		id: 12,
+		name: "Product 12",
+		price: 200,
+		category: ["Category 4"],
+		description: "Description 12",
+		image: "https://picsum.photos/id/" + id_array[11] + "/200/300",
+	},
+	{
+		id: 13,
+		name: "Product 13",
+		price: 200,
+		category: ["Category 4"],
+		description: "Description 13",
+		image: "https://picsum.photos/id/" + id_array[12] + "/200/300",
+	},
 ];
 
 const categories = [...new Set(products.map((product) => product.category).flat())];
@@ -132,9 +156,11 @@ console.log(categories);
 	import {Flip} from "gsap/Flip";
 	gsap.registerPlugin(Flip);
 
+	const container = document.querySelector("[data-products-list]") as HTMLElement;
 	const allButton = document.querySelector("[data-product-category='all']") as HTMLElement;
 	const filters = gsap.utils.toArray("[data-product-category]") as HTMLElement[];
 	const items = gsap.utils.toArray("[data-product-card]") as HTMLElement[];
+	let containerHeight = container.offsetHeight;
 
 	function updateFilters() {
 		const state = Flip.getState(items);
@@ -162,14 +188,41 @@ console.log(categories);
 			}
 		}
 
+		// Set container height to current height to prevent collapse during animation
+		container.style.height = containerHeight + "px";
+
 		// animate from the previous state
 		Flip.from(state, {
 			duration: 0.4,
 			scale: true,
 			absolute: true,
-			ease: "power1.inOut",
+			ease: "power2.inOut",
 			onEnter: (elements) => gsap.fromTo(elements, {opacity: 0, scale: 0}, {opacity: 1, scale: 1, duration: 0.4}),
 			onLeave: (elements) => gsap.to(elements, {opacity: 0, scale: 0, duration: 0.4}),
+			onComplete: () => {
+				// After animation, smoothly transition to new height
+
+				// Reset to auto to get natural height
+				container.style.height = "fit-content";
+				const newHeight = container.offsetHeight;
+				console.log("New height:", newHeight);
+
+				// Animate height transition
+				gsap.fromTo(
+					container,
+					{height: containerHeight + "px"},
+					{
+						height: newHeight + "px",
+						duration: 0.3,
+						ease: "power2.inOut",
+						onComplete: () => {
+							// Reset to auto after animation
+							container.style.height = "auto";
+							containerHeight = newHeight;
+						},
+					}
+				);
+			},
 		});
 	}
 
@@ -195,10 +248,14 @@ console.log(categories);
 </script>
 
 <style>
+	* {
+		box-sizing: border-box;
+	}
 	.products {
 		width: 100%;
 		height: 100%;
 
+		padding: 5rem;
 		> * {
 			font-family: "PP Fraktion Mono";
 		}
@@ -234,6 +291,7 @@ console.log(categories);
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		border: 1px solid red;
 	}
 
 	.products__list {
@@ -253,7 +311,7 @@ console.log(categories);
 		align-items: center;
 		justify-content: center;
 		gap: 1rem;
-		width: 300px; /* Fixed width prevents layout shifts */
+		width: 100%; /* Fixed width prevents layout shifts */
 		border: 1px solid #ccc;
 		background-color: #fff;
 		border-radius: 0.5rem;
