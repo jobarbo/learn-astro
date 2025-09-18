@@ -5,3 +5,17 @@ const {tier} = Astro.props as {tier: string};
 <div class='card__header'>
 	<p class='card__tier'>{tier}</p>
 </div>
+
+<style lang='scss'>
+	.card__header {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.card__tier {
+		font-size: 18px;
+		font-weight: 600;
+		color: #000;
+		font-family: "Helvetica", sans-serif;
+	}
+</style>

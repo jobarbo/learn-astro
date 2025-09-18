@@ -1,0 +1,30 @@
+---
+const {icon = false, text = "placeholder"} = Astro.props as {icon: boolean; text: string};
+---
+
+<li class='list__item'>
+	<p class='list__item-text'>
+		<span class='list__item-icon'>{icon ? "✅" : "❌"}</span>
+		{text}
+	</p>
+</li>
+
+<style lang='scss'>
+	.list__item {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+	}
+	.list__item-text {
+		font-size: 16px;
+		font-weight: 400;
+		color: #000;
+		font-family: "Helvetica", sans-serif;
+	}
+	.list__item-icon {
+		font-size: 16px;
+		font-weight: 400;
+		color: #000;
+		font-family: "Helvetica", sans-serif;
+	}
+</style>

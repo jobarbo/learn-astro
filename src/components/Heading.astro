@@ -1,0 +1,46 @@
+---
+import {type HTMLAttributes} from "astro/types";
+const {text, tag = "p", class: className = ""} = Astro.props as {text: string; tag: string; class: string};
+const CustomTag = tag as keyof HTMLElementTagNameMap;
+---
+
+<CustomTag class={`heading ${className}`}>{text}</CustomTag>
+
+<style lang='scss'>
+	.heading {
+		font-family: "Helvetica", sans-serif;
+		width: 100%;
+		text-align: left;
+
+		&.--title1 {
+			font-size: 3.125rem;
+			font-weight: 600;
+			color: #000;
+		}
+		&.--title2 {
+			font-size: 2rem;
+			font-weight: 600;
+			color: #000;
+		}
+		&.--title3 {
+			font-size: 1.5rem;
+			font-weight: 600;
+			color: #000;
+		}
+		&.--title4 {
+			font-size: 1rem;
+			font-weight: 600;
+			color: #000;
+		}
+		&.--title5 {
+			font-size: 0.75rem;
+			font-weight: 600;
+			color: #000;
+		}
+		&.--title6 {
+			font-size: 0.5rem;
+			font-weight: 600;
+			color: #000;
+		}
+	}
+</style>

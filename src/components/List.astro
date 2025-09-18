@@ -1,0 +1,16 @@
+---
+import ListItem from "./ListItem.astro";
+const {array} = Astro.props as {array: any[]};
+---
+
+<ul class='card__list list'>
+	{array.map((content: any) => <ListItem icon={content.checked} text={content.title} />)}
+</ul>
+
+<style lang='scss'>
+	.list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25em;
+	}
+</style>
