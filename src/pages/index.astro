@@ -1,6 +1,8 @@
 ---
 import Button from "../components/Button.astro";
 import Heading from "../components/Heading.astro";
+import {Counter} from "../components/Counter";
+
 const headings = [
 	{tag: "h1", size: "title1", text: "Heading 1"},
 	{tag: "h2", size: "title2", text: "Heading 2"},
@@ -21,17 +23,129 @@ const headings = [
 	</head>
 </html>
 <body>
-	<!-- {
-		headings.map((heading) => {
-			return (
-				<Heading tag={heading.tag} size={heading.size}>
-					{heading.text}
-				</Heading>
-			);
-		})
-	} -->
-	<Heading tag='a' size='h1' classes='text-center underline' aria-label='Link' href='https://www.google.com'> Hello World </Heading>
+	<Heading tag='h1' size='h1' classes='text-center'> Hello World </Heading>
 	<Button id='btn-1' aria-label='Button 1' data-testid='btn-1'>Click me</Button>
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia eos earum, sit magni mollitia quis, fuga nesciunt amet delectus, magnam ex adipisci totam fugiat quo quos aliquam in nulla dolores.
+	</p>
+	<p>
+		Expedita incidunt voluptatem necessitatibus veniam, quae sint minus repellat facere ab fugiat molestiae at nostrum ea exercitationem, corrupti iure accusamus eveniet. Enim ut temporibus ipsam
+		quisquam rerum officia dolorum saepe.
+	</p>
+	<p>
+		Velit perspiciatis quia consequatur veniam, ut tempora iure ipsa, eveniet commodi autem accusantium voluptatibus ad. Voluptates quisquam optio corrupti! Odio voluptatum alias ducimus error
+		doloribus itaque delectus optio pariatur beatae.
+	</p>
+	<p>
+		Optio tempore dolore nisi ratione magni rem, assumenda, perferendis asperiores soluta nulla, aspernatur voluptas repudiandae nesciunt quidem fugit doloribus sequi. Voluptatem at quas, quis
+		exercitationem esse nobis quo? Tempora, unde!
+	</p>
+	<p>
+		Excepturi pariatur eaque totam natus reiciendis quae placeat accusamus eveniet sit perspiciatis tempora corrupti voluptatum cumque saepe, et incidunt suscipit tenetur soluta explicabo mollitia,
+		magni doloribus accusantium! Quo, debitis quae?
+	</p>
+	<p>
+		Architecto officia delectus et perspiciatis, dolore cumque voluptate temporibus doloremque error dicta accusantium tenetur molestias ut quos itaque aliquid ad, enim, nisi a soluta. Quae voluptatum
+		consequuntur labore excepturi vel.
+	</p>
+	<p>
+		Officiis, neque! At ipsum minus asperiores distinctio aperiam sit labore maiores quasi molestias quos culpa ab suscipit ullam quas cum ducimus, debitis sed voluptates vel a aut. Quo, adipisci
+		soluta?
+	</p>
+	<p>
+		Excepturi id voluptas, dicta blanditiis nisi eum, modi aspernatur corrupti, odit ipsam cupiditate deserunt repudiandae quod sapiente similique sit eaque quis perferendis vel. Nobis dolores
+		praesentium provident mollitia sint enim?
+	</p>
+	<p>
+		Deleniti culpa reprehenderit voluptates nesciunt sapiente impedit voluptatibus animi, aliquid laboriosam sed fuga molestiae, ipsam praesentium ut provident cupiditate aut laudantium, tenetur
+		tempore aperiam. Commodi ducimus neque ex et ad?
+	</p>
+	<p>
+		Eos, libero laborum voluptatibus possimus molestias ad magnam alias sint, eligendi labore iste, ducimus dolorem maiores ratione rerum eum? Consectetur incidunt sapiente tempora. Vero vitae
+		voluptatem dignissimos nobis voluptas temporibus?
+	</p>
+	<p>
+		Quisquam magni vitae non molestias ipsam excepturi perspiciatis dolores veritatis ab odit nostrum necessitatibus at dolore repellendus vero illo laboriosam praesentium repellat quae modi autem
+		quia aut, sequi saepe. Ipsum!
+	</p>
+	<p>
+		Earum molestias alias ipsum accusamus ea aspernatur deleniti mollitia architecto, sed repellat consectetur minus inventore incidunt voluptatum ullam facere ut laboriosam saepe eius aliquam sequi
+		sapiente? Ad quis corporis facilis.
+	</p>
+	<p>
+		Quam laborum sapiente temporibus totam, quasi nisi deserunt est! Dicta id dolorem, cupiditate sequi sed quas enim nemo ipsa quaerat ipsum voluptates temporibus magni quos illum itaque
+		necessitatibus officiis officia!
+	</p>
+	<p>
+		Eveniet aliquid alias adipisci exercitationem nam reiciendis in odio reprehenderit, quia nemo natus, officia nulla illum neque vero ad. Obcaecati nostrum veritatis nobis eos fugit aspernatur
+		possimus modi? Ducimus, earum!
+	</p>
+	<p>
+		Autem delectus eum optio modi nostrum pariatur nulla deleniti? Nisi, quasi eius recusandae pariatur ipsam dolorum delectus tempore cum quia, provident libero saepe, praesentium porro atque quaerat
+		nam non voluptas!
+	</p>
+	<p>
+		Eum atque aliquid suscipit nam ratione at voluptatum velit. Et, aperiam nam magnam iure possimus minus quasi doloremque qui! Culpa ipsum, distinctio modi nesciunt soluta harum alias exercitationem
+		assumenda fuga!
+	</p>
+	<p>
+		Exercitationem expedita ad, nisi recusandae assumenda odit cupiditate numquam! Libero a, asperiores eos quae enim pariatur, cumque consequatur ex esse unde consequuntur amet doloribus suscipit,
+		magnam fugit sint natus quibusdam.
+	</p>
+	<p>
+		Eligendi adipisci nostrum ab odit unde praesentium sint rerum quos saepe, sunt quaerat, doloribus in nam quidem id minima mollitia ea similique earum animi quod voluptas dolore dolorum! Tenetur,
+		fuga!
+	</p>
+	<p>
+		Esse at fugit praesentium, soluta magni nemo aliquid ut tempore eligendi eveniet dicta ab deleniti nesciunt distinctio illum recusandae sit! Soluta ad doloremque harum minima consectetur ipsum
+		necessitatibus. Officia, et.
+	</p>
+	<p>
+		Tempora voluptatem impedit asperiores deserunt eos. Nemo, atque. Accusamus aspernatur molestiae fugiat repellendus facilis ex ipsa officiis dolor ipsum aliquid, quis iure provident quasi. Quae
+		praesentium voluptatem dolor molestiae omnis!
+	</p>
+	<p>
+		Quasi eius harum laudantium, quidem numquam soluta excepturi at aspernatur accusantium? Cumque quia asperiores nemo. Odit, reprehenderit voluptatum consectetur quisquam omnis, unde illo suscipit
+		quibusdam pariatur provident commodi tenetur! Necessitatibus.
+	</p>
+	<p>
+		Enim suscipit vero explicabo quaerat labore eaque obcaecati harum ut, sequi, distinctio, asperiores ipsum dolore sapiente earum eligendi! Animi, dolorum suscipit. Asperiores aliquam unde ullam est
+		iste a ducimus modi?
+	</p>
+	<p>
+		Omnis, aut distinctio consequuntur doloremque voluptates culpa quos minima maxime quasi, vitae iste ipsa, enim odio dolorum modi cupiditate ipsum ducimus quam. Nam aperiam rem nesciunt. Natus
+		vitae dolore ipsam!
+	</p>
+	<p>
+		Perspiciatis recusandae temporibus, asperiores velit mollitia obcaecati, consequuntur nobis laborum, vero aperiam minus minima quasi enim natus delectus ad accusamus dolor in nisi excepturi! Qui
+		quam neque accusantium veniam error?
+	</p>
+	<p>
+		Eligendi commodi et excepturi numquam cupiditate quidem adipisci eveniet rem placeat asperiores velit dolores dolor repellendus, hic impedit recusandae iure ut maxime atque dolorum quasi. Officiis
+		eos porro quis nobis?
+	</p>
+	<p>
+		Velit debitis perferendis placeat, voluptatibus eos accusamus repellendus, consequatur ipsam officiis architecto culpa unde quam vel incidunt fugit possimus doloribus illo ducimus eveniet
+		necessitatibus veniam odio. Facere earum quaerat neque!
+	</p>
+	<p>
+		Nisi quidem tempore mollitia accusantium voluptas, soluta fuga, temporibus similique quae assumenda error magnam nam consequuntur id consequatur dolor, ipsum maiores dignissimos et ipsa natus.
+		Totam excepturi illum repellendus qui.
+	</p>
+	<p>
+		Repellat minima eos cupiditate excepturi eaque cum esse nisi? Adipisci fuga cupiditate nam saepe reprehenderit officia, facere animi pariatur labore, ratione sequi veritatis sed tempore quod ad
+		debitis perspiciatis dolorem.
+	</p>
+	<p>
+		Perspiciatis alias temporibus nemo dolores quasi mollitia vitae eos aliquam, voluptate provident cum illo ex sunt sequi odio ullam possimus dolorum delectus? Ratione suscipit illum provident
+		voluptas hic reprehenderit corporis?
+	</p>
+	<p>
+		Mollitia nesciunt quisquam, non pariatur autem ullam, officiis reprehenderit sunt suscipit velit odit debitis dolor laborum inventore quia? Sit perspiciatis, quae voluptates eum quasi aliquam nisi
+		reiciendis amet totam doloremque?
+	</p>
+
+	<Counter client:visible />
 </body>
 <script>
 	let btn = document.querySelector('[data-testid="btn-1"]') as HTMLElement | null;
