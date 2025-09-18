@@ -1,0 +1,14 @@
+---
+const {card} = Astro.props as {card: any};
+import CardHeader from "./CardHeader.astro";
+import CardBody from "./CardBody.astro";
+import Button from "./Button.astro";
+import FeaturesList from "./FeaturesList.astro";
+---
+
+<div class='pricing__card card' id=''>
+	<CardHeader tier={card.tier} />
+	<CardBody title={card.title} description={card.description} />
+	<Button btn_text={card.btn_text} />
+	<FeaturesList features={card.features} />
+</div>

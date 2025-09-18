@@ -1,0 +1,8 @@
+---
+import FeatureItem from "./FeatureItem.astro";
+const {features} = Astro.props as {features: any[]};
+---
+
+<ul class='card__features'>
+	{features.map((feature: any) => <FeatureItem feature={feature} />)}
+</ul>
