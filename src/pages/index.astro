@@ -21,7 +21,7 @@ const headings = [
 	</head>
 </html>
 <body>
-	{
+	<!-- {
 		headings.map((heading) => {
 			return (
 				<Heading tag={heading.tag} size={heading.size}>
@@ -29,8 +29,8 @@ const headings = [
 				</Heading>
 			);
 		})
-	}
-
+	} -->
+	<Heading tag='a' size='h1' classes='text-center underline' aria-label='Link' href='https://www.google.com'> Hello World </Heading>
 	<Button id='btn-1' aria-label='Button 1' data-testid='btn-1'>Click me</Button>
 </body>
 <script>
