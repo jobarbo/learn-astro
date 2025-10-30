@@ -1,8 +1,10 @@
 ---
-const {title, description} = Astro.props as {title: string; description: string};
+const {title, description, tag} = Astro.props as {title: string; description: string; tag: boolean};
+const tag_text = tag ? "Most Popular" : "";
 ---
 
 <div class='card__body'>
+	{tag && <p class='card__tag'>{tag_text}</p>}
 	<p class='card__title'>{title}</p>
 	<p class='card__description'>{description}</p>
 </div>
@@ -13,7 +15,7 @@ const {title, description} = Astro.props as {title: string; description: string}
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		gap: 1em;
+		gap: 0.5em;
 	}
 	.card__title {
 		font-size: 24px;
@@ -28,5 +30,15 @@ const {title, description} = Astro.props as {title: string; description: string}
 		color: #000;
 		font-family: "Helvetica", sans-serif;
 		text-align: center;
+	}
+	.card__tag {
+		font-size: 12px;
+		font-weight: 400;
+		color: #fff;
+		font-family: "Helvetica", sans-serif;
+		text-align: center;
+		background-color: #000;
+		padding: 0.5em 1em;
+		border-radius: 0.5em;
 	}
 </style>

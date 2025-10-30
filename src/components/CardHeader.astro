@@ -1,8 +1,9 @@
 ---
 const {tier} = Astro.props as {tier: string};
+const tier_class = tier.toLowerCase().replace(" ", "-");
 ---
 
-<div class='card__header'>
+<div class={`card__header --${tier_class}`}>
 	<p class='card__tier'>{tier}</p>
 </div>
 
@@ -11,11 +12,25 @@ const {tier} = Astro.props as {tier: string};
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		padding: 0.5em 0;
+		&.--free {
+			background-color: #000;
+		}
+		&.--pro {
+			background-color: #4c4cb2;
+		}
+		&.--enterprise {
+			background-color: #d0aa25;
+		}
 	}
 	.card__tier {
 		font-size: 18px;
 		font-weight: 600;
-		color: #000;
+		color: #fff;
 		font-family: "Helvetica", sans-serif;
 	}
 </style>
