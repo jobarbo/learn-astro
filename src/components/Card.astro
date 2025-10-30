@@ -6,7 +6,8 @@ import Button from "./Button.astro";
 import List from "./List.astro";
 ---
 
-<div class='pricing__card card' id=''>
+<div class='pricing__card card' id='animate-anything-css'>
+	<span data-speed='2.5' class='card__square'></span>
 	<CardHeader tier={card.tier} />
 	<CardBody title={card.title} description={card.description} />
 	<Button label={card.btn_text} />
@@ -25,5 +26,24 @@ import List from "./List.astro";
 		box-shadow: 0px 20px 25px 0px rgba(194, 194, 214, 0.3);
 		height: auto;
 		gap: 1em;
+		&__square {
+			width: 10px;
+			height: 10px;
+			background-color: #000;
+			position: relative;
+			top: 0;
+		}
 	}
 </style>
+
+<script>
+	import gsap from "gsap";
+	import {ScrollTrigger} from "gsap/ScrollTrigger";
+
+	gsap.to(".card__square", {
+		duration: 4,
+		ease: "none",
+		repeat: -1,
+		rotation: 360,
+	});
+</script>
