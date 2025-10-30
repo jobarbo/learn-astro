@@ -1,10 +1,12 @@
 ---
+import Check from "./icons/Check.astro";
+import Cross from "./icons/Cross.astro";
 const {icon = false, text = "placeholder"} = Astro.props as {icon: boolean; text: string};
 ---
 
 <li class='list__item'>
 	<p class='list__item-text'>
-		<span class='list__item-icon'>{icon ? "✅" : "❌"}</span>
+		<span class='list__item-icon'>{icon ? <Check size={21} color='#00FF00' /> : <Cross size={21} color='#FF0000' />}</span>
 		{text}
 	</p>
 </li>
@@ -20,6 +22,9 @@ const {icon = false, text = "placeholder"} = Astro.props as {icon: boolean; text
 		font-weight: 400;
 		color: #000;
 		font-family: "Helvetica", sans-serif;
+		display: flex;
+		align-items: center;
+		gap: 0.5em;
 	}
 	.list__item-icon {
 		font-size: 16px;
