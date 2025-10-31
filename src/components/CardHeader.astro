@@ -1,4 +1,6 @@
 ---
+import "../styles/CardHeader.scss";
+
 const {tier} = Astro.props as {tier: string};
 const tier_class = tier.toLowerCase().replace(" ", "-");
 ---
@@ -7,30 +9,4 @@ const tier_class = tier.toLowerCase().replace(" ", "-");
 	<p class='card__tier'>{tier}</p>
 </div>
 
-<style lang='scss'>
-	.card__header {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		padding: 0.5em 0;
-		&.--free {
-			background-color: #000;
-		}
-		&.--pro {
-			background-color: #4c4cb2;
-		}
-		&.--enterprise {
-			background-color: #d0aa25;
-		}
-	}
-	.card__tier {
-		font-size: 18px;
-		font-weight: 600;
-		color: #fff;
-		font-family: "Helvetica", sans-serif;
-	}
-</style>
+<style lang='scss'></style>
