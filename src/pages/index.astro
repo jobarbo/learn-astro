@@ -1,12 +1,12 @@
 ---
-import cards from "../data/cardData.json";
+import cardData from "@/data/cardData.json";
 
-import Layout from "../layouts/Layout.astro";
-import Pricing from "../components/Pricing.astro";
+import Layout from "@/layouts/Layout.astro";
+import Pricing from "@/components/Pricing.astro";
 
-import "../styles/global.scss";
+import "@/styles/global.scss";
 ---
 
 <Layout>
-	<Pricing cards={cards} />
+	<Pricing cardData={cardData} />
 </Layout>

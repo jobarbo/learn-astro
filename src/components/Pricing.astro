@@ -1,14 +1,28 @@
 ---
-import Card from "./Card.astro";
-import Heading from "./Heading.astro";
-const {cards} = Astro.props as {cards: any[]};
+import Card from "@/components/Card.astro";
+import Heading from "@/components/Heading.astro";
+type Props = {
+	cardData: {
+		tier: string;
+		most_popular: boolean;
+		amount_per_month: number;
+		title: string;
+		description: string;
+		btn_text: string;
+		features: {
+			title: string;
+			checked: boolean;
+		}[];
+	}[];
+};
+const {cardData} = Astro.props as Props;
 ---
 
 <section class='pricing'>
 	<div class='pricing__container'>
 		<Heading text='Pricing' tag='h2' class='--title1' />
 		<div class='pricing__card-list'>
-			{cards.map((card: any) => <Card card={card} />)}
+			{cardData.map((cardData) => <Card card={cardData} />)}
 		</div>
 	</div>
 </section>
