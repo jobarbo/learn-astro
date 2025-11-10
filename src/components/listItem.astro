@@ -1,12 +1,16 @@
 ---
 import Icon from "@/components/Icon.astro";
 const {icon = false, text = "placeholder"} = Astro.props as {icon: boolean; text: string};
+
+import Logo from "@/assets/favicon.svg";
+
+const color = icon ? "#1EAC3E" : "#D93535";
 ---
 
 <li class='list__item'>
 	<p class='list__item-text'>
 		<span class='list__item-icon'>
-			<Icon index={icon ? 0 : 1} size={21} color={icon ? "#1EAC3E" : "#D93535"} />
+			<Logo width={25} height={25} fill={color} stroke={color} />
 		</span>
 		{text}
 	</p>
