@@ -1,0 +1,24 @@
+---
+// Session Test Component
+// Displays visit count and last visit timestamp from session storage
+// Props must be passed from the page frontmatter (session operations must happen there)
+
+interface Props {
+	visitCount: number;
+	lastVisit?: string;
+}
+
+const {visitCount, lastVisit} = Astro.props;
+---
+
+<div style='padding: 1rem; margin-bottom: 2rem; background: #f0f0f0; border-radius: 8px;'>
+	<h2>Session Test</h2>
+	<p>Visit count: <strong>{visitCount}</strong></p>
+	{
+		lastVisit && (
+			<p>
+				Last visit: <strong>{lastVisit}</strong>
+			</p>
+		)
+	}
+</div>

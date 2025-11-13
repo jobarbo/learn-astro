@@ -3,10 +3,25 @@ import cardData from "@/data/cardData.json";
 
 import Layout from "@/layouts/Layout.astro";
 import Pricing from "@/components/Pricing.astro";
+import SessionTest from "@/components/SessionTest.astro";
 
 import "@/styles/global.scss";
+
+export const prerender = false; // Required for sessions to work
+
+// Session operations must happen in page frontmatter, not in components
+// Get session data
+const visitCount = (await Astro.session?.get("visitCount")) || 0;
+const lastVisit = await Astro.session?.get("lastVisit");
+
+// Set/update session data
+const newVisitCount = visitCount + 1;
+await Astro.session?.set("visitCount", newVisitCount);
+const updatedLastVisit = new Date().toISOString();
+await Astro.session?.set("lastVisit", updatedLastVisit);
 ---
 
 <Layout>
+	<SessionTest visitCount={newVisitCount} lastVisit={updatedLastVisit} />
 	<Pricing cardData={cardData} />
 </Layout>
