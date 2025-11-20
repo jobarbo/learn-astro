@@ -1,8 +1,9 @@
 ---
-const {label} = Astro.props as {label: string};
+const {label, tier} = Astro.props as {label: string; tier: string};
+const tier_class = tier.toLowerCase().replace(" ", "-");
 ---
 
-<a href={label} class='card__btn'>
+<a href={label} class={`card__btn --${tier_class}`}>
 	{label}
 </a>
 
@@ -22,5 +23,34 @@ const {label} = Astro.props as {label: string};
 	.card__btn:hover {
 		background-color: #2e2e2e;
 		color: #fff;
+	}
+
+	.card__btn.--free {
+		background-color: transparent;
+		color: #000;
+		border: 2px solid #000;
+
+		&:hover {
+			background-color: #000;
+			color: #fff;
+		}
+	}
+	.card__btn.--pro {
+		background-color: #4c4cb2;
+		border: 2px solid #4c4cb2;
+		&:hover {
+			background-color: transparent;
+			color: #4c4cb2;
+		}
+	}
+	.card__btn.--enterprise {
+		background-color: transparent;
+		color: #d0aa25;
+		border: 2px solid #d0aa25;
+
+		&:hover {
+			background-color: #d0aa25;
+			color: #fff;
+		}
 	}
 </style>

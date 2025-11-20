@@ -9,7 +9,7 @@ import List from "@/components/List.astro";
 <div class='pricing__card card' id='animate-anything-css'>
 	<CardHeader tier={card.tier} />
 	<CardBody title={card.title} description={card.description} tag={card.most_popular} />
-	<Button label={card.btn_text} />
+	<Button label={card.btn_text} tier={card.tier} />
 	<List array={card.features} />
 </div>
 
