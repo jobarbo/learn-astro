@@ -1,19 +1,20 @@
 ---
 import Card from "@/components/Card.astro";
 import Heading from "@/components/Heading.astro";
-type Props = {
-	cardData: {
-		tier: string;
-		most_popular: boolean;
-		amount_per_month: number;
+export type CardProps = {
+	tier: string;
+	most_popular: boolean;
+	amount_per_month: number;
+	title: string;
+	description: string;
+	btn_text: string;
+	features: {
 		title: string;
-		description: string;
-		btn_text: string;
-		features: {
-			title: string;
-			checked: boolean;
-		}[];
+		checked: boolean;
 	}[];
+};
+type Props = {
+	cardData: CardProps[];
 };
 const {cardData} = Astro.props as Props;
 ---
